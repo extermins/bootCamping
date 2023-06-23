@@ -35,7 +35,7 @@
         </div>
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#github"/></svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="https://github.com/extermin1/bootCamping"><svg class="bi" width="24" height="24"><use xlink:href="#github"/></svg></a></li>
             <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/min_0107/"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
             <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
         </ul>
