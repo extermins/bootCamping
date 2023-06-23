@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootcamping.mapper.ripple.RippleMapper">
+
+    <insert id="addRipple">
+        insert into ripple (boardnum, memberid, content)
+        VALUES (#{boardnum}, #{memberid}, #{content})
+    </insert>
+
+    <select id="getListRipple" resultType="com.bootcamping.domain.VO.RippleVO">
+        select * from ripple where boardnum = #{boardnum} order by boardnum desc
+    </select>
+
+    <select id="getOneRipple" resultType="com.bootcamping.domain.DTO.RippleDTO">
+        select * from ripple where rippleid = #{rippleid}
+    </select>
+
+    <delete id="deleteRipple">
+        delete from ripple where rippleid = #{rippleid}
+    </delete>
+
+    <select id="rippleCount" resultType="int">
+        select COUNT(rippleid) from ripple where boardnum = #{boardnum}
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootcamping.mapper.menu.MenuMapper">
+
+
+
+    <select id="listMenu" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu order by mid desc LIMIT 4
+    </select>
+
+    <select id="getMealKitList" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where menutype = 'mealkit' order by rand() limit 8
+    </select>
+
+    <select id="getCampingList" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where menutype = 'camp' order by rand() limit 8
+    </select>
+
+    <select id="getAllMealKitList" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where menutype = 'mealkit' order by mid desc
+    </select>
+
+    <select id="getAllCampingList" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where menutype = 'camp' order by mid desc
+    </select>
+
+    <select id="getOneMenu" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where mid = #{mid}
+    </select>
+    
+    <update id="discountAmount">
+        update menu set amount = amount - #{amount} where mid = #{menuid}
+    </update>
+
+    <update id="updateHit">
+        update menu set hit = hit + 1 where mid = #{menuid}
+    </update>
+
+    <update id="updateSalesRate">
+        update menu set salesrate = salesrate + #{salesRate}  where mid = #{menuid}
+    </update>
+
+    <select id="relatedProducts" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where detailcategory = #{detailCategory} and mid != #{mid} order by rand() limit 4
+    </select>
+
+    <select id="popularItem" resultType="com.bootcamping.domain.VO.MenuVO">
+        select * from menu where menutype = #{menutype} order by salesrate desc limit 4
+    </select>
+
+
+
+</mapper>

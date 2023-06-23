@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootcamping.mapper.order.OrderMapper">
+
+    <insert id="insertOrder">
+        insert into `order`
+        values (null, #{tossOrderId}, #{memberId}, #{recipient}, #{menuid}, #{orderItem}, #{price}, #{amount}, #{phone},
+                #{zipcode}, #{address1}, #{address2}, #{request}, 0, 0, now())
+    </insert>
+
+    <update id="updatePayCheck" parameterType="String">
+        update `order` set paycheck = 1 where tossorderid = #{tossOrderId}
+    </update>
+
+
+    <select id="individualOrder" parameterType="int" resultType="com.bootcamping.domain.VO.OrderVO">
+        select A.*, B.filename from `order` AS a left outer join menu AS B on A.menuid = B.mid where memberid = #{mid} order by regdate desc
+    </select>
+
+    <select id="getOneOrder" resultType="com.bootcamping.domain.VO.OrderVO">
+        select A.*, B.filename, B.name from `order` AS a left outer join menu AS B on A.menuid = B.mid where A.orderid = #{orderid} and A.memberid = #{memberid}
+    </select>
+
+    <update id="updateReviewCheck" parameterType="int">
+        update `order` set reviewcheck = 1 where orderid = #{orderid}
+    </update>
+</mapper>

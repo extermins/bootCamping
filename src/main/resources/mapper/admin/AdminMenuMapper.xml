@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootcamping.mapper.admin.AdminMenuMapper">
+
+    <insert id="addMenu" parameterType="com.bootcamping.domain.VO.MenuVO">
+        insert into menu (name, menutype, detailcategory, price, amount, filename, filesize)
+        values (#{name}, #{menutype}, #{detailcategory}, #{price}, #{amount}, #{filename}, #{filesize})
+    </insert>
+
+    <select id="getAllMenu" resultType="com.bootcamping.domain.DTO.MenuDTO">
+        select * from menu
+    </select>
+
+    <update id="modifyMenu">
+        update menu set name = #{name}, menutype = #{menutype},detailcategory = #{detailcategory},amount = #{amount}, price = #{price},filename =#{filename},filesize=#{filesize} where mid = #{mid}
+    </update>
+
+    <update id="updateAmount">
+        update menu set amount = amount + #{amount} where mid = #{mid}
+    </update>
+
+    <delete id="deleteMenu">
+        delete from menu where mid= #{mid}
+    </delete>
+</mapper>
